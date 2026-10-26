@@ -16,3 +16,20 @@
 <section><h2>9. Limits and next steps</h2><p>The current version uses a small synthetic dataset, deterministic forecasts, and portion-level inventory. It does not yet learn from actual post-service waste, distinguish breakfast from lunch, or connect to a purchasing system.</p><h3>Feedback-informed next step</h3><p>A user suggested adding historical ingredient preferences to improve dining decisions. A future version could use opt-in, aggregated preference signals to identify meals or ingredients that users are more likely to choose. This signal should never override allergy, expiry, inventory, or food-safety rules, and it should not expose an individual's eating history.</p><h3>Next month</h3><ol><li>Import actual point-of-sale and waste-log data.</li><li>Add a feedback button so managers can record why they changed a recommendation.</li><li>Test several forecast strategies and compare accuracy.</li><li>Add separate plans for dietary, breakfast, lunch, and dinner menus.</li><li>Test aggregate preference signals with privacy safeguards.</li><li>Deploy a read-only online demo with a fixed test dataset.</li></ol><p>The system should remain read-only until its forecast quality and safety checks are validated with a real user.</p><p class="small">The feedback note is documented in <code>output/user_feedback_note.md</code>. No measured performance improvement is claimed yet.</p></section>
 <section><h2>10. Conclusion</h2><p>Campus Dining Demand & Waste Control Tower turns a vague “how much should we prepare?” question into a transparent operational decision. It combines multiple agents, MCP data tools, structured risk flags, and a human approval boundary.</p><div class="callout"><b>What the manager gets:</b> a draft plan, visible assumptions, waste and cost estimates, shortage warnings, and a clear explanation of when human judgment is required.</div><p>This project is designed to make a small but meaningful improvement: less avoidable waste without pretending that an AI system can know tomorrow's demand with certainty.</p></section>
 </body></html>
+<script>
+(function () {
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'));
+  var section = sections.find(function (item) {
+    var heading = item.querySelector('h2');
+    return heading && heading.textContent.indexOf('2. What is new here') !== -1;
+  });
+  if (!section || section.querySelector('#named-product-comparison')) return;
+  var comparison = document.createElement('div');
+  comparison.id = 'named-product-comparison';
+  comparison.className = 'callout';
+  comparison.innerHTML = '<b>Named product comparison:</b> Toast and Oracle Food &amp; Beverage/MICROS are primarily restaurant point-of-sale and operations platforms, while Leanpath focuses on measuring and reducing food waste. This project is narrower and complementary: it combines campus events, weather, inventory, expiry windows, meal-level prep recommendations, and a human approval gate in one planning workflow. It is not intended to replace a POS or waste-tracking system; it turns those signals into a transparent draft decision for a campus dining manager.';
+  var table = section.querySelector('table');
+  if (table) table.insertAdjacentElement('afterend', comparison);
+  else section.appendChild(comparison);
+})();
+</script>
