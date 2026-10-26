@@ -1,0 +1,10 @@
+{
+  "test_type": "deterministic scenario benchmark",
+  "note": "These are repeatable system tests using the included synthetic dataset, not a real-user study.",
+  "scenarios": [
+    {"name": "normal weekday", "weather": "clear", "attendance": 100, "predicted_demand": 296, "recommended_prep": 286, "projected_waste": 7, "projected_waste_cost": 22.15},
+    {"name": "rainy family weekend", "weather": "rain", "attendance": 350, "predicted_demand": 358, "recommended_prep": 303, "projected_waste": 1, "projected_waste_cost": 1.15},
+    {"name": "large event clear", "weather": "clear", "attendance": 800, "predicted_demand": 364, "recommended_prep": 303, "projected_waste": 1, "projected_waste_cost": 1.15},
+    {"name": "snow day", "weather": "snow", "attendance": 120, "predicted_demand": 303, "recommended_prep": 291, "projected_waste": 7, "projected_waste_cost": 22.15}
+  ]
+}
