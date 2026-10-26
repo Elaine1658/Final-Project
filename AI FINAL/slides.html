@@ -14,3 +14,52 @@
 <section><div class="tag">08 · USER FEEDBACK + NEXT STEPS</div><h2>What a real user suggested.</h2><p class="quote">“Add historical user ingredient preferences so the system can make better dining decisions.”</p><div class="grid two" style="margin-top:24px"><div class="card"><h3>How we would add it</h3><p>Use opt-in, aggregated preference signals to estimate which meals or ingredients users are more likely to choose.</p></div><div class="card"><h3>Privacy and safety</h3><p>Do not expose individual eating history. Preferences cannot override allergy, expiry, inventory, or food-safety rules.</p></div></div><p class="muted">Next: test preference signals against actual choices and manager adjustments.</p></section>
 <section><div class="tag">09 · TAKEAWAY</div><h2>Less waste, better decisions.</h2><p class="lede">Campus Dining Demand & Waste Control Tower combines MCP tools, specialized agents, scenario simulation, visible risks, and a human approval boundary.</p><div class="card" style="max-width:800px"><h3>The manager leaves with:</h3><ul><li>A draft prep plan</li><li>Visible assumptions and confidence</li><li>Meal-level shortage and expiry warnings</li><li>Projected waste and cost</li><li>A clear next action</li></ul></div><p class="quote" style="margin-top:24px">The goal is not to automate judgment. It is to make good judgment faster and easier to defend.</p></section>
 </main><script>const slides=[...document.querySelectorAll('section')];let i=0;function go(n){i=Math.max(0,Math.min(slides.length-1,n));slides[i].scrollIntoView({behavior:'smooth'})}document.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(i+1)}if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();go(i-1)}});</script></body></html>
+<script>
+(function () {
+  var root = document.querySelector('main');
+  if (!root || root.classList.contains('reveal')) return;
+
+  var css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = 'https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css';
+  document.head.appendChild(css);
+
+  var theme = document.createElement('link');
+  theme.rel = 'stylesheet';
+  theme.href = 'https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css';
+  document.head.appendChild(theme);
+
+  var style = document.createElement('style');
+  style.textContent = '.reveal{background:var(--green);font-family:Inter,system-ui,sans-serif}.reveal main,.reveal .slides{max-width:none}.reveal .slides section{min-height:0!important;height:100%;box-sizing:border-box;text-align:left;padding:70px 85px}.reveal .slides section img{max-height:46vh}.keys{display:none}.reveal .progress{color:var(--orange)}.reveal .controls{color:var(--mint)}';
+  document.head.appendChild(style);
+
+  var slides = document.createElement('div');
+  slides.className = 'slides';
+  Array.prototype.slice.call(root.querySelectorAll(':scope > section')).forEach(function (section) {
+    slides.appendChild(section);
+  });
+  root.className = 'reveal';
+  root.style.maxWidth = 'none';
+  root.style.margin = '0';
+  root.textContent = '';
+  root.appendChild(slides);
+
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js';
+  script.onload = function () {
+    if (window.Reveal) {
+      window.Reveal.initialize({
+        hash: true,
+        controls: true,
+        progress: true,
+        slideNumber: true,
+        transition: 'slide',
+        width: 1280,
+        height: 720,
+        margin: 0.04
+      });
+    }
+  };
+  document.body.appendChild(script);
+})();
+</script>
