@@ -5,7 +5,7 @@
 - [x] API health, plan generation, and approval routes pass.
 - [x] Dashboard serves and supports scenario simulation.
 - [x] Report and slide deck included.
-- [x] Offline token usage is honestly recorded as zero.
+- [x] Offline token usage is honestly recorded as zero, with a separate real live gpt-6-luna run recorded in `output/live_ai_evidence.json`.
 - [x] Technical verification saved in `output/verification.json`.
 - [x] Repeatable scenario benchmark saved in `output/scenario_benchmark.json`.
 - [x] Add one qualitative real-user test record; do not claim measured impact beyond the recorded feedback.
