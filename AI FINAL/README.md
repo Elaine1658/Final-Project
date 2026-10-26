@@ -21,7 +21,7 @@ For the course dry run, keep any local `.env` file outside the cloned repository
 
 Open http://localhost:8010 in a browser and click **Create tomorrow's plan**.
 
-The app runs in deterministic offline mode and does not require an API key. The optional `.env.example` documents the course model configuration for a future live-agent mode. If a key is used, the app should look for `.env` in this folder first and then in the parent folder.
+The app runs in deterministic offline mode and does not require an API key. The included `.env.example` lists the supported course key names for a future live-agent mode. If a key is used, the app looks for `.env` in this folder first and then in the parent folder.
 
 ## What is included
 
