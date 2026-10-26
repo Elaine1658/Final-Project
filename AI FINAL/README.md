@@ -9,12 +9,15 @@ The app is intentionally safe by default: it creates a recommendation only. It d
 Requirements: Python 3.11+.
 
 ```bash
-cd campus-dining-waste-planner
+git clone https://github.com/Elaine1658/Final-Project.git
+cd "Final-Project/AI FINAL"
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn backend.main:app --reload --port 8010
 ```
+
+For the course dry run, keep any local `.env` file outside the cloned repository, one level above `Final-Project`. The submitted app runs in deterministic offline mode, so an API key is not required.
 
 Open http://localhost:8010 in a browser and click **Create tomorrow's plan**.
 
