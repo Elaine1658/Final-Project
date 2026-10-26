@@ -10,6 +10,6 @@
 - [x] Repeatable scenario benchmark saved in `output/scenario_benchmark.json`.
 - [x] Add one qualitative real-user test record; do not claim measured impact beyond the recorded feedback.
 - [x] Add final dashboard screenshots to the report and slides (embedded in both HTML files).
-- [ ] Commit and push the folder to GitHub from a shell with write access to the repository `.git` directory.
+- [x] Uploaded the standalone `AI FINAL` folder to the public GitHub repository and verified the latest main-branch files.
 
 The last three items are intentionally not fabricated. The current workspace permits editing project files but blocks writes to the parent repository's Git index.
