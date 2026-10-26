@@ -46,9 +46,24 @@
     '<p>The app supports two modes. Offline mode remains the default for a reproducible fresh-clone demo and uses zero model tokens. With <code>LIVE_AI=true</code> and the course Portkey key, a live review agent reads the structured draft and explains risks; deterministic quantities and safety gates remain in control.</p>' +
     '<table><tr><th>Mode</th><th>Model</th><th>Input tokens</th><th>Cached input</th><th>Output tokens</th><th>Total</th><th>Cost</th></tr>' +
     '<tr><td>Offline demo</td><td>None</td><td>0</td><td>0</td><td>0</td><td>0</td><td>$0</td></tr>' +
-    '<tr><td>Measured live run</td><td>gpt-6-luna</td><td>2,466</td><td>0</td><td>320</td><td>2,786</td><td>Not returned by provider</td></tr></table>' +
-    '<p><b>Measured scenario:</b> rainy weather, Yale Family Weekend, and 350 expected attendees. The run made one provider request and returned a structured review. The exact provider cost was not included in the response, so no dollar figure is fabricated; the scale estimate should multiply this measured token profile by the current course pricing.</p>' +
-    '<p>Cost controls are one request per plan review, a 6,000-token run limit, structured output, a small context window, deterministic arithmetic, and no live call when a simple rule can answer the question.</p>' +
+    '<tr><td>Measured live run</td><td>gpt-6-luna</td><td>2,466</td><td>0</td><td>320</td><td>2,786</td><td>Formula below</td></tr></table>' +
+    '<p><b>Measured scenario:</b> rainy weather, Yale Family Weekend, and 350 expected attendees. The run made one provider request and returned a structured review. The provider did not return a dollar cost, so the estimate uses the course rate card variables <code>P<sub>in</sub></code> and <code>P<sub>out</sub></code>, expressed in dollars per million tokens.</p>' +
+    '<div class="callout"><b>Cost estimate:</b> one live run costs <code>C = (2,466 × P<sub>in</sub> + 320 × P<sub>out</sub>) / 1,000,000</code>. Assuming 20 plan reviews per user per month, one user costs <code>20C</code> per month, 100 users cost <code>2,000C</code>, and 10,000 users cost <code>200,000C</code>. Insert the current course rates for <code>P<sub>in</sub></code> and <code>P<sub>out</sub></code> to get dollar amounts without changing the measured usage.</div>' +
+    '<p>Cost controls are one request per plan review, a 6,000-token run limit, structured output, a small context window, deterministic arithmetic, and no live call when a simple rule can answer the question. The model was chosen because the course key supports <code>gpt-6-luna</code>, it is sufficient for a short structured review, and the app keeps arithmetic and safety decisions deterministic.</p>' +
     '<div class="callout"><b>Evidence:</b> <code>output/live_ai_evidence.json</code> records the real Portkey run. The model reviewed the draft only; it could not purchase food, change inventory, or bypass manager approval.</div>';
+})();
+</script>
+<script>
+(function () {
+  var section = Array.prototype.slice.call(document.querySelectorAll('section')).find(function (item) {
+    var heading = item.querySelector('h2');
+    return heading && heading.textContent.indexOf('3. The agents') !== -1;
+  });
+  if (!section || section.querySelector('#model-selection-rationale')) return;
+  var note = document.createElement('p');
+  note.id = 'model-selection-rationale';
+  note.className = 'callout';
+  note.innerHTML = '<b>Model choice:</b> The live review uses course-supported <code>gpt-6-luna</code> because it is appropriate for a short, structured review of a draft plan and keeps the project within the course budget. The model explains risks and assumptions; deterministic code remains responsible for quantities, inventory constraints, safety flags, and approval.';
+  section.appendChild(note);
 })();
 </script>

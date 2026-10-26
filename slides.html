@@ -63,3 +63,17 @@
   document.body.appendChild(script);
 })();
 </script>
+<script>
+(function () {
+  var section = Array.prototype.slice.call(document.querySelectorAll('section')).find(function (item) {
+    var tag = item.querySelector('.tag');
+    return tag && tag.textContent.indexOf('07 · COST AND IMPACT') !== -1;
+  });
+  if (!section || section.querySelector('#tokenomics-updated')) return;
+  section.id = 'tokenomics-updated';
+  section.innerHTML = '<div class="tag">07 · COST AND IMPACT</div><h2>Measure first, then scale.</h2>' +
+    '<div class="grid two"><div class="card"><strong>$0</strong><p>Offline demo model cost: no live model tokens are consumed.</p></div><div class="card"><strong>2,786</strong><p>Measured live-run tokens: 2,466 input + 320 output, one gpt-6-luna request.</p></div></div>' +
+    '<div class="card" style="margin-top:18px"><h3>Transparent cost formula</h3><p>If <code>P<sub>in</sub></code> and <code>P<sub>out</sub></code> are the course rates in dollars per million tokens, one live run costs <code>C = (2,466 × P<sub>in</sub> + 320 × P<sub>out</sub>) / 1,000,000</code>. At 20 runs per user per month: 1 user = <code>20C</code>, 100 users = <code>2,000C</code>, and 10,000 users = <code>200,000C</code>.</p></div>' +
+    '<p class="muted">The provider did not return a dollar amount, so this deck reports measured usage and a reproducible formula instead of inventing a price. gpt-6-luna was selected because it is the course-supported model and is sufficient for a short structured review; deterministic code keeps quantity and safety decisions stable.</p>';
+})();
+</script>
