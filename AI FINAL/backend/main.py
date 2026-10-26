@@ -9,8 +9,9 @@ from .agents import build_plan
 
 ROOT = Path(__file__).resolve().parents[1]
 # The course runner may place its shared .env beside the cloned repository.
-# Check the repo first, then its parent, without overwriting repo-local values.
-for env_file in (ROOT / '.env', ROOT.parent / '.env'):
+# This repo keeps the app under AI FINAL, so cover the app folder, the clone
+# root, and the folder above the clone. Earlier locations win.
+for env_file in (ROOT / '.env', ROOT.parent / '.env', ROOT.parent.parent / '.env'):
     load_dotenv(env_file, override=False)
 API_KEY_CONFIGURED = bool(os.getenv('PORTKEY_API_KEY') or os.getenv('OPENAI_API_KEY'))
 app = FastAPI(title='Campus Dining Demand & Waste Control Tower')
