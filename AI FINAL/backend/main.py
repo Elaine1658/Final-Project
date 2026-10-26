@@ -1,11 +1,18 @@
 from pathlib import Path
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
+from dotenv import load_dotenv
 from .agents import build_plan
 
 ROOT = Path(__file__).resolve().parents[1]
+# The course runner may place its shared .env beside the cloned repository.
+# Check the repo first, then its parent, without overwriting repo-local values.
+for env_file in (ROOT / '.env', ROOT.parent / '.env'):
+    load_dotenv(env_file, override=False)
+API_KEY_CONFIGURED = bool(os.getenv('PORTKEY_API_KEY') or os.getenv('OPENAI_API_KEY'))
 app = FastAPI(title='Campus Dining Demand & Waste Control Tower')
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
 LAST = None
@@ -24,7 +31,7 @@ def home():
 
 @app.get('/api/health')
 def health():
-    return {'ok': True, 'mode': 'offline deterministic demo'}
+    return {'ok': True, 'mode': 'offline deterministic demo', 'api_key_configured': API_KEY_CONFIGURED}
 
 @app.post('/api/plan')
 def plan(req: PlanRequest | None = None):
